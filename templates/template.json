@@ -4265,44 +4265,88 @@
       ]
     },
     {
-      "categories": ["Management", "Tools"],
-      "description": "The Unifi-controller Controller software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        }
-      ],
-      "image": "linuxserver/unifi-controller:latest",
-      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/Images/unifi-icon.png",
-      "name": "unifi-controller",
-      "platform": "linux",
-      "ports": [
-        "3478:3478/udp",
-        "10001:10001/udp",
-        "8080:8080/tcp",
-        "8081:8081/tcp",
-        "8443:8443/tcp",
-        "8843:8843/tcp",
-        "8880:8880/tcp",
-        "6789:6789/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "title": "UniFi Controller",
       "type": 1,
+      "title": "UniFi Video",
+      "name": "UniFi Video",
+      "description": "UniFi Video is a powerful and flexible, integrated IP video management surveillance system designed to work with Ubiquiti’s UniFi Video Camera product line. UniFi Video has an intuitive, configurable, and feature‑packed user interface with advanced features such as motion detection, auto‑discovery, user‑level security, storage management, reporting, and mobile device support.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/UniFiVideo-logo.png",
+      "image": "pducharme/unifi-video-controller:latest",
+      "categories": [
+        "CCTV"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "1935:1935/tcp",
+        "7444:7444/tcp",
+        "7447:7447/tcp",
+        "6666:6666/tcp",
+        "7442:7442/tcp",
+        "7080:7080/tcp",
+        "7443:7443/tcp",
+        "7445:7445/tcp",
+        "7446:7446/tcp"
+      ],
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/Unifi",
-          "container": "/config"
+          "container": "/recordings",
+          "bind": "/portainer/Files/AppData/Config/UnifFiVideo/Recordings/"
+        },
+        {
+          "container": "/config",
+          "bind": "/portainer/Files/AppData/Config/UniFiVideo/"
+        }
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "99"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100"
+        },
+        {
+          "name": "UMASK",
+          "label": "UMASK",
+          "default": "002"
+        },
+        {
+          "name": "CONTEXT_PATH",
+          "label": "CONTEXT_PATH",
+          "set": "UniFi Video"
         }
       ]
     },
+    {
+      "type": 1,
+      "title": "Yacht",
+      "name": "yacht",
+      "description": "A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png",
+      "image": "selfhostedpro/yacht:latest",
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "8001:8000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "yacht"
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "bind": "/var/run/docker.sock"
+        }
+      ]
+    }, 
     {
       "categories": ["Other", "Tools", "Maintenance"],
       "description": "With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry. Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially.",
@@ -4396,35 +4440,12 @@
       ]
     },
     {
-      "categories": ["Other", "Tools"],
-      "description": "A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.",
-      "image": "selfhostedpro/yacht:latest",
-      "logo": "https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png",
-      "name": "yacht",
-      "platform": "linux",
-      "ports": ["8001:8000/tcp"],
-      "restart_policy": "unless-stopped",
-      "title": "Yacht",
-      "type": 1,
-      "volumes": [
-        {
-          "bind": "yacht",
-          "container": "/config"
-        },
-        {
-          "bind": "/var/run/docker.sock",
-          "container": "/var/run/docker.sock"
-        }
-      ]
-    },
-    {
       "categories": ["Other", "Downloaders"],
       "description": "YoutubeDL-Material is a Material Design frontend for youtube-dl. It's coded using Angular 9 for the frontend, and Node.js on the backend.",
       "image": "tzahi12345/youtubedl-material:latest",
       "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/Images/ytdlm.png",
       "name": "youtubedl-material",
       "platform": "linux",
-      "ports": ["17442:17442/tcp"],
       "restart_policy": "unless-stopped",
       "title": "YouTubeDL-Material",
       "type": 1,
@@ -4452,32 +4473,342 @@
       ]
     },
     {
-      "categories": ["Messenger"],
-      "description": "ZNC is an IRC network bouncer or BNC. It can detach the client from the actual IRC server, and also from selected channels. Multiple clients from different locations can connect to a single ZNC account simultaneously and therefore appear under the same nickname on IRC.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        }
-      ],
-      "image": "linuxserver/znc:latest",
-      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/Images/znc-icon.png",
-      "name": "znc",
-      "platform": "linux",
-      "ports": ["6501:6501/tcp"],
-      "restart_policy": "unless-stopped",
-      "title": "ZNC",
       "type": 1,
+      "title": "ZNC",
+      "name": "znc",
+      "description": "ZNC is an IRC network bouncer or BNC. It can detach the client from the actual IRC server, and also from selected channels. Multiple clients from different locations can connect to a single ZNC account simultaneously and therefore appear under the same nickname on IRC.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/znc-icon.png",
+      "image": "lscr.io/linuxserver/znc:latest",
+      "categories": [
+        "Messenger"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "6501:6501/tcp"
+      ],
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/ZNC",
-          "container": "/config"
+          "container": "/config",
+          "bind": "/portainer/Files/AppData/Config/ZNC"
+        }
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100"
+        }
+      ]
+    }, 
+    {
+      "type": 1,
+      "title": "GOPHISH",
+      "name": "gophish",
+      "description": "NOTE: Once you deploy your GoPhish instance, please navigate to the logs section in Portainer and acquire your 'admin' credentials for login. Gophish is an open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/gophish.png",
+      "image": "gophish/gophish:latest",
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "3333:3333/tcp"
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "Seafile",
+      "name": "seafile",
+      "description": "Seafile is an open-source, cross-platform file-hosting software system. Files are stored on a central server and can be synchronized with personal computers and mobile devices through apps. Files on the Seafile server can also be accessed directly via the server's web interface.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/seafile.png",
+      "categories": [
+        "Cloud",
+        "Other"
+      ],
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/SelfhostedPro/selfhosted_templates",
+        "stackfile": "Template/Stack/seafile.yml"
+      },
+      "env": [
+        {
+          "name": "TIME_ZONE",
+          "label": "Time Zone",
+          "default": "Etc/UTC"
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "Database Password",
+          "default": "password"
+        },
+        {
+          "name": "ADMIN_EMAIL",
+          "label": "Administrator Email",
+          "default": "me@example.com"
+        },
+        {
+          "name": "ADMIN_PASSWORD",
+          "label": "Administrator Password",
+          "default": "asecret"
+        },
+        {
+          "name": "SERVER_HOSTNAME",
+          "label": "Domain Name",
+          "default": "docs.seafile.com"
+        },
+        {
+          "name": "ENABLE_HTTPS",
+          "label": "Enable HTTPS?",
+          "select": [
+            {
+              "text": "Yes",
+              "value": "true",
+              "default": true
+            },
+            {
+              "text": "No",
+              "value": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Dozzle",
+      "name": "dozzle",
+      "description": "Dozzle is a simple, lightweight application that provides you with a web based interface to monitor your Docker container logs live. It doesn’t store log information, it is for live monitoring of your container logs only.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/dozzle.png",
+      "image": "amir20/dozzle:latest",
+      "categories": [
+        "Other",
+        "Tools",
+        "Maintenance"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "8080:8080/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "bind": "/var/run/docker.sock"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Wallbag",
+      "name": "wallabag",
+      "description": "wallabag is a self hostable application for saving web pages: Save and classify articles. Read them later. Freely.",
+      "logo": "https://raw.githubusercontent.com/jake-walker/selfhosted_templates/wallabag/Images/wallabag.png",
+      "image": "wallabag/wallabag:latest",
+      "categories": [
+        "Tools",
+        "Productivity",
+        "Web",
+        "Other"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/var/www/wallabag/data",
+          "bind": "/portainer/Files/AppData/Wallabag/data"
+        },
+        {
+          "container": "/var/www/wallabag/web/assets/images",
+          "bind": "/portainer/Files/AppData/Wallabag/images"
+        }
+      ],
+      "ports": [
+        "80:80/tcp"
+      ],
+      "env": [
+        {
+          "name": "SYMFONY__ENV__SECRET",
+          "label": "Secret",
+          "default": "ovmpmAWXRCabNlMgzlzFXDYmCFfzGv",
+          "description": "This should be set to a random string of characters."
+        },
+        {
+          "name": "SYMFONY__ENV__DOMAIN_NAME",
+          "label": "Domain Name",
+          "default": "https://wallabag.example.com"
+        },
+        {
+          "name": "SYMFONY__ENV__MAILER_HOST",
+          "label": "SMTP Host",
+          "default": "127.0.0.1"
+        },
+        {
+          "name": "SYMFONY__ENV__MAILER_USER",
+          "label": "SMTP Username",
+          "default": "~"
+        },
+        {
+          "name": "SYMFONY__ENV__MAILER_PASSWORD",
+          "label": "SMTP Password",
+          "default": "~"
+        },
+        {
+          "name": "SYMFONY__ENV__FROM_EMAIL",
+          "label": "SMTP From Email",
+          "default": "wallabag@example.com"
+        },
+        {
+          "name": "SYMFONY__ENV__FOSUSER_REGISTRATION",
+          "label": "Enable public user registration?",
+          "select": [
+            {
+              "text": "Yes",
+              "value": "true",
+              "default": true
+            },
+            {
+              "text": "No",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "name": "SYMFONY__ENV__FOSUSER_CONFIRMATION",
+          "label": "Require registration confirmation?",
+          "select": [
+            {
+              "text": "Yes",
+              "value": "true",
+              "default": true
+            },
+            {
+              "text": "No",
+              "value": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "DDClient",
+      "name": "ddclient",
+      "description": "DDClient is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ddclient.png",
+      "image": "lscr.io/linuxserver/ddclient:latest",
+      "categories": [
+        "Other",
+        "Utilities"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "volumes": [
+          {
+          "container": "/config",
+          "bind": "/portainer/Files/AppData/Config/DDClient/"
+          }
+        ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "1000"
+        },
+        {
+          "name": "CONTEXT_PATH",
+          "label": "CONTEXT_PATH",
+          "set": "ddclient"
+        },
+        {
+          "name": "JAVA_OPTS",
+          "label": "JAVA_OPTS",
+          "set": "-Xms256m -Xmx512m"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Peppermint",
+      "name": "Peppermint",
+      "description": "Peppermint is a free and open source tickeg management solution with a range of features",
+      "logo": "https://raw.githubusercontent.com/Peppermint-Lab/peppermint/master/public/logo.svg",
+      "image": "pepperlabs/peppermint:latest",
+      "categories": [
+        "Other",
+        "Tools",
+        "Management"
+      ],
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "ports": [
+        "5001:5001/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data",
+          "bind": "/srv/dev-disk-by-label-media/Files/AppData/Config/peppermint"
+  
+        }
+      ],
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1000"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100"
+        },
+        {
+          "name": "PORT",
+          "label": "PORT",
+          "default": "5001"
+        },
+        {
+          "name": "DB_USERNAME",
+          "label": "DB_USERNAME",
+          "default": "peppermint"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB_PASSWORD",
+          "default": "1234"
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "postgres"
         }
       ]
     }
