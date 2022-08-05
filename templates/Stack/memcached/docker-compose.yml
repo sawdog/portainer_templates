@@ -1,0 +1,16 @@
+version: '3.7'
+
+networks:
+  traefik:
+    external:
+      name: traefik
+services:
+  memcached:
+    image: memcached:latest
+    container_name: memcached
+    entrypoint: memcached -m 256
+    networks:
+      - traefik 
+    ports:
+      - 11211:11211
+    restart: always
