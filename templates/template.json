@@ -4826,48 +4826,6 @@
         "url": "https://github.com/sawdog/portainer_templates",
         "stackfile": "templates/stack/scope.yml"
       },
-      "env": [
-        {
-          "name": "TIME_ZONE",
-          "label": "Time Zone",
-          "default": "Etc/UTC"
-        },
-        {
-          "name": "MYSQL_ROOT_PASSWORD",
-          "label": "Database Password",
-          "default": "password"
-        },
-        {
-          "name": "ADMIN_EMAIL",
-          "label": "Administrator Email",
-          "default": "me@example.com"
-        },
-        {
-          "name": "ADMIN_PASSWORD",
-          "label": "Administrator Password",
-          "default": "asecret"
-        },
-        {
-          "name": "SERVER_HOSTNAME",
-          "label": "Domain Name",
-          "default": "docs.seafile.com"
-        },
-        {
-          "name": "ENABLE_HTTPS",
-          "label": "Enable HTTPS?",
-          "select": [
-            {
-              "text": "Yes",
-              "value": "true",
-              "default": true
-            },
-            {
-              "text": "No",
-              "value": "false"
-            }
-          ]
-        }
-      ]
     },
   ]
 }
