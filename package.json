@@ -8,8 +8,8 @@
     "yaml-validator": "^3.0.1"
   },
   "scripts": {
-    "pretest": "jsonlint Template/template.json --quiet",
-    "test": "yaml-validator Template/Stack/*"
+    "pretest": "jsonlint templates/template.json --quiet",
+    "test": "yaml-validator templates/Stack/*"
   },
   "repository": {
     "type": "git",
