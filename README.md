@@ -145,7 +145,7 @@ If you wish to contribute make a pull request, create an issue, or email me.
 
 ## Authors
 * **NASHosted** - *Current Work* - [NASHOSTED](https://github.com/nashosted)
-* **SelfhostedPro** - *Current Work* - [SelfhostedPro](https://github.com/SelfhostedPro)
+* **sawdog** - *Current Work* - [sawdog](https://github.com/sawdog)
 * **Jos Visser** - *Initial work* - [Qballjos](https://github.com/Qballjos)
 * **xe-nvdk** - *template conversion to portainer V2* - [xe-nvdk](https://github.com/xe-nvdk)
 * **tbiering** - *Termplate cleanup and typo fixes* - [tbiering](https://github.com/tbiering)

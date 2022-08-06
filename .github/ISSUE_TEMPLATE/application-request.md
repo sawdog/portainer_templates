@@ -50,7 +50,7 @@ assignees: ''
         }
       ],
       "image": "linuxserver/airsonic:latest",
-      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/Images/airsonic-logo.png",
+      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/images/airsonic-logo.png",
       "name": "airsonic",
       "platform": "linux",
       "ports": [
