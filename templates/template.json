@@ -4817,7 +4817,7 @@
       "title": "Scope",
       "name": "scope",
       "description": "Weave Scope is a visualization and monitoring tool for Docker and Kubernetes.",
-      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/images/seafile.png",
+      "logo": "https://raw.githubusercontent.com/sawdog/portainer_templates/master/images/scope.png",
       "categories": [
         "Utilities"
       ],
