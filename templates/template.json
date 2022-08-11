@@ -4824,7 +4824,7 @@
       "platform": "linux",
       "repository": {
         "url": "https://github.com/sawdog/portainer_templates",
-        "stackfile": "templates/stack/scope.yml"
+        "stackfile": "templates/stack/scope/docker-compose.yml"
       }
     }
   ]
