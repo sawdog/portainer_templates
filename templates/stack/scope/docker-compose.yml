@@ -5,8 +5,7 @@ services:
     network_mode: host
     container_name: scope
     privileged: true
-    ports:
-      - 4040:4040
+    volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:rw"
     command:
-      - "--app-only"  # see
+      - "--mode=app --weave=false"
