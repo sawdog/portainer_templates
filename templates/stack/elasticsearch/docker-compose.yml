@@ -1,4 +1,4 @@
-iversion: "2.2"
+iversion: "3.7"
 
 networks:
   elastic:
